@@ -1,10 +1,8 @@
-import { Navigation } from "./components/Navigation";
-import {Header} from "./components/Header";
+import {Header} from "./components/header/Header";
 import {Hero} from "./components/Hero";
 import {Cards} from "./components/Cards";
 import {Footer} from "./components/Footer";
 import React from "react";
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -18,20 +16,11 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation/>
-      {/* <Header/> */}
+      <Header/>
       <Hero/>
       <Cards/>
       <Footer/>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {!data ? "Loading..." : data}
-        </p>
-        
-      </header> */}
     </div>
   );
 }
-// ReactDOM.render(<App />, document.getElementById("root"));
 export default App;
