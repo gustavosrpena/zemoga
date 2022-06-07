@@ -1,6 +1,7 @@
 import { Search } from "./search/Search"
 import { LoginModal } from "./login-modal/LoginModal"
 import { useState } from "react"
+import './Header.css'
 
 export const Header = (props) =>{
 
@@ -24,12 +25,12 @@ export const Header = (props) =>{
                             <a className="open__login" onClick={() => {setOpenModal(true)}}>
                                 Login / Sign Up
                             </a>
-                            {openModal && <LoginModal closeModal={setOpenModal}/>}
                         </li>
                         <li>
                            <Search/>
                         </li>
                     </ul>
+                    {openModal && <LoginModal closeModal={setOpenModal}/>}
                 </div>
             </nav>
         </header>

@@ -13,10 +13,6 @@
         margin-right: auto;
     }
     
-    .modal__container .modal__closer{
-        
-    }
-    
     .modal__login, .modal__register{
         width: 40%;
         margin: auto;
