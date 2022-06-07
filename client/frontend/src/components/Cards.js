@@ -1,4 +1,15 @@
+import axios from "axios";
+import { useEffect } from "react";
+
 export const Cards = (props) => {
+
+    const fetchData = async() =>{
+        const data = await axios.get('/api');
+        console.log(data)
+      }
+      useEffect(()=> {
+          fetchData()
+      })
     return (
         <section className="cards">
             <aside class="banner banner-top" role="doc-tip" aria-label="Speak Out">
