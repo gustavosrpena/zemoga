@@ -1,3 +1,5 @@
+import './Hero.css'
+
 export const Hero = (props) =>{
     return (
         <section class="hero">
@@ -5,7 +7,7 @@ export const Hero = (props) =>{
             class="hero__background"
             srcset="assets/img/pope-francis.png 750w, assets/img/pope-francis.@2x.png 1440w"
             sizes="(min-width: 750px) 1440px, 100vw"
-            src="assets/img/pope-francis.png"
+            src="./assets/img/pope-francis.png"
             alt="Pope Francis"/>
         <div class="max-centered">
             <div class="hero__featured-card">

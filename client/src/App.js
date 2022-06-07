@@ -1,7 +1,7 @@
 import {Header} from "./components/header/Header";
-import {Hero} from "./components/Hero";
+import {Hero} from "./components/hero/Hero";
 import {Cards} from "./components/Cards";
-import {Footer} from "./components/Footer";
+import {Footer} from "./components/footer/Footer";
 import React from "react";
 import './App.css';
 
