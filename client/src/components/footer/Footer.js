@@ -1,3 +1,5 @@
+import './Footer.css'
+
 export const Footer = (props) => {
     return (
         <footer class="footer">
