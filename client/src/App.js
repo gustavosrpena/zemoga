@@ -1,6 +1,6 @@
 import {Header} from "./components/header/Header";
 import {Hero} from "./components/Hero";
-import {Cards} from "./components/Cards";
+import {Cards} from "./components/cards-section/Cards";
 import {Footer} from "./components/Footer";
 import React from "react";
 import './App.css';
