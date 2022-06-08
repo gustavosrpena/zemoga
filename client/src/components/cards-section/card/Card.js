@@ -1,8 +1,23 @@
 import "./Card.css"
 import { VoteBar } from "./vote-bar/VoteBar"
-import { VoteOptions } from "./vote-options/VoteOptions"
+import { useState } from "react"
 
-export const Card = (props) => {
+export const Card = () => {
+
+    const props = {
+        vote: {
+            good: 15,
+            bad: 10
+        },
+        date: {
+            day: 8,
+            month: 6
+        },
+        name: 'Kayne West',
+        desc: 'lorem blablablabla',
+        category: 'Music',
+        img: 'assets/img/pope-francis.png'
+    }
 
     let voteText = 'Vote Now'
 
@@ -30,13 +45,13 @@ export const Card = (props) => {
 
     return (
         <div className="votecard__container">
-            <img className="votecard__background-img" src={props.src} alt={props.name} title={props.name}/>
+            <img className="votecard__background-img" src={props.img} alt={props.name} title={props.name}/>
             <div className="votecard__text">
                 <h2>{props.name}</h2>
                 <p>{props.desc}</p>
             </div>
             <div className="votecard__vote-options">
-                <span className="votecard__vote-how-old">{calcDate(date)} in {category}</span>
+                <span className="votecard__vote-how-old">{calcDate(props.date)} in {props.category}</span>
                 <form className="votecard__form" action="#"> 
                     <label className="votecard__form-option">
                         <input type="image" src="assets/img/thumbs-up.svg"/>
