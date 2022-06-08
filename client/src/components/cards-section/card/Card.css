@@ -1,3 +1,26 @@
-.votecard__vote-options{
+.votecard__form{
     display: flex;
+    justify-content: space-between;
+    width: 200px;
 }
+
+.votecard__form input{
+    display: none;
+}
+
+.votecard__form-input{
+    padding: 10px;
+}
+
+.votecard__form input[type="radio"]:checked+label { 
+    outline: 1px solid #000;
+}
+
+.votecard__form-input.good{
+    background-color: rgba(60, 187, 180, 0.8);
+}
+
+.votecard__form-input.bad{
+    background-color: rgba(249, 173, 29, 0.8);
+}
+
