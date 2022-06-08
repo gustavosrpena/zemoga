@@ -49,7 +49,7 @@ export const Card = () => {
         console.log('after', props.votes)
         
     };
-
+    
     const calcDate = (dateCard) => {
         let newDate = new Date()
         let day = newDate.getDate()
