@@ -1,23 +1,36 @@
 import "./Card.css"
 import { VoteBar } from "./vote-bar/VoteBar"
 import { useState } from "react"
+import React from "react"
+import axios from "axios"
 
-export const Card = () => {
+export const Card = (props) => {
+    console.log(props.date,"data")
+    // console.log(props.date.day,"data")
 
-    var props = {
-        votes: {
-            good: 15,
-            bad: 10
-        },
-        date: {
-            day: 3,
-            month: 5
-        },
-        name: 'Kayne West',
-        desc: 'lorem blablablabla',
-        category: 'Music',
-        img: 'assets/img/pope-francis.png'
-    }
+    const day = props.date[8].concat(props.date[9])
+    const month = props.date[5].concat(props.date[6])
+    // props.date = {day,month}
+
+    // // props.date.day = props.date.getDay()
+    // // props.date.month = props.month.getMonth()
+
+    // var props = {
+    //     votes: {
+    //         good: 15,
+    //         bad: 10
+    //     },
+    //     date: {
+    //         day: 3,
+    //         month: 5
+    //     },
+    //     name: 'Kayne West',
+    //     desc: 'lorem blablablabla',
+    //     category: 'Music',
+    //     img: 'assets/img/pope-francis.png'
+    // }
+
+
 
     const voteState = {
         vote: '',
@@ -50,18 +63,18 @@ export const Card = () => {
         
     };
     
-    const calcDate = (dateCard) => {
+    const calcDate = (day,month) => {
         let newDate = new Date()
-        let day = newDate.getDate()
-        let month = newDate.getMonth()+1
+        let newDay = newDate.getDate()
+        let newMonth = newDate.getMonth()+1
 
-        if(month == dateCard.month){
-            if (day == dateCard.day) return 'today'
-            else if (day == dateCard.day+1) return 'yesterday'
-            else return day-dateCard.day + ' days ago'
+        if(newMonth == month){
+            if (newDay == day) return 'today'
+            else if (newDay == day+1) return 'yesterday'
+            else return newDay-day + ' days ago'
         }
-        else if (month == dateCard.month+1) return 'last month'
-        else return month-dateCard.month + ' months ago'
+        else if (newMonth == month+1) return 'last month'
+        else return newMonth-month + ' months ago'
     }
 
     return (
@@ -74,7 +87,7 @@ export const Card = () => {
             </div>
             
             <div className="votecard__vote-options">
-                <span className="votecard__vote-eyebrown-text">{calcDate(props.date)} in {props.category}</span>
+                <span className="votecard__vote-eyebrown-text">{calcDate(day,month)} in {props.category}</span>
                 
                 <form className="votecard__form" onSubmit={voteSubmit}> 
                     <input type="radio" id="thumbs-up" name="vote" value="good" onChange={voteChange}/>
