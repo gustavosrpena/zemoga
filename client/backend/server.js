@@ -66,8 +66,8 @@ app.use(bodyParser.json({
 }))
 
 app.post('/send', (req, res) => {
-  console.log(req.body);
-  db.collection('cards').updateOne(req.body, (err, data) => {
+  console.log(db,"a",db.cards,"b",Cards,"c");
+  db.cards.updateOne(req.body, (err, data) => {
       if(err) return console.log(err);
       res.send(('saved to db: ' + data));
   })

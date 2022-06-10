@@ -16,11 +16,11 @@
     outline: 1px solid #000;
 }
 
-.votecard__form-input.good{
+.votecard__form-input.positive{
     background-color: rgba(60, 187, 180, 0.8);
 }
 
-.votecard__form-input.bad{
+.votecard__form-input.negative{
     background-color: rgba(249, 173, 29, 0.8);
 }
 

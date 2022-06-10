@@ -46,6 +46,7 @@ export const Cards = (props) => {
             {cards.map(card =>{
             console.log(card)
             return  <Card 
+                id = {card._id}
                 name = {card.name}
                 description = {card.description}
                 category = {card.category}
