@@ -5,9 +5,9 @@ import React from "react"
 import axios from "axios"
 
 export const Card = (props) => {
-    console.log(props.date,"data")
+    console.log(props.id,"data")
     // console.log(props.date.day,"data")
-
+    // props.picture = 
     const day = props.date[8].concat(props.date[9])
     const month = props.date[5].concat(props.date[6])
     // props.date = {day,month}
@@ -17,8 +17,8 @@ export const Card = (props) => {
 
     // var props = {
     //     votes: {
-    //         good: 15,
-    //         bad: 10
+    //         positive: 15,
+    //         negative: 10
     //     },
     //     date: {
     //         day: 3,
@@ -54,9 +54,43 @@ export const Card = (props) => {
         }
         console.log('before', props.votes)
     
-        if (state.vote == 'good') props.votes.good += 1
+        if (state.vote == 'positive'){
+
+             props.votes.positive += 1
+            }
             
-        else props.votes.bad += 1
+        else {
+            props.votes.negative += 1
+        }
+
+        let databody = { "id" :props.id,
+           "votes": props.votes
+        };
+        fetch('http://localhost:5000/send', {
+            method: 'POST',
+            body: JSON.stringify(databody),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(res => res.json())
+        .then(data => console.log(data));
+
+        // const postData = async() =>{
+        //     const options ={
+        //       url: 'http://localhost:5000/send',
+        //       method: 'post',
+        //       headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json;charset=UTF-8'
+        //       }
+        //     };
+        //     await axios(options,JSON.stringify(databody))
+        //       .then(response => {
+        //           console.log(response)
+        //       });
+        //   }
+        //   postData();
 
         setState({voteBtnText: "Vote Again",});
         console.log('after', props.votes)
@@ -79,29 +113,29 @@ export const Card = (props) => {
 
     return (
         <div className="votecard__container">
-            <img className="votecard__background-img" src={props.img} alt={props.name} title={props.name}/>
+            <img className="votecard__background-img" src={"assets/card-img/card/"+props.picture} alt={props.name} title={props.name}/>
             
             <div className="votecard__text">
                 <h2>{props.name}</h2>
-                <p>{props.desc}</p>
+                <p>{props.description}</p>
             </div>
             
             <div className="votecard__vote-options">
                 <span className="votecard__vote-eyebrown-text">{calcDate(day,month)} in {props.category}</span>
                 
                 <form className="votecard__form" onSubmit={voteSubmit}> 
-                    <input type="radio" id="thumbs-up" name="vote" value="good" onChange={voteChange}/>
-                    <label className="votecard__form-input good" for="thumbs-up"><img src="assets/img/thumbs-up.svg" /></label>
+                    <input type="radio" id="thumbs-up" name="vote" value="positive" onChange={voteChange}/>
+                    <label className="votecard__form-input positive" for="thumbs-up"><img src="assets/img/thumbs-up.svg" /></label>
                     
-                    <input type="radio" id="thumbs-down" name="vote" value="bad" onChange={voteChange}/>
-                    <label className="votecard__form-input bad" for="thumbs-down"><img src="assets/img/thumbs-down.svg" /></label>
+                    <input type="radio" id="thumbs-down" name="vote" value="negative" onChange={voteChange}/>
+                    <label className="votecard__form-input negative" for="thumbs-down"><img src="assets/img/thumbs-down.svg" /></label>
                     
                     <button className="votecard_vote-button" type="submit">{state.voteBtnText}</button>
                 </form>
 
             </div>
 
-            <VoteBar good={props.votes.good} bad={props.votes.bad}/>
+            <VoteBar positive={props.votes.positive} negative={props.votes.negative}/>
         </div>
     )
 }

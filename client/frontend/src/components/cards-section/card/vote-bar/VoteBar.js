@@ -2,18 +2,18 @@ import './VoteBar.css'
 
 export const VoteBar = (votes) => {
 
-    let totalVotes = votes.good + votes.bad
+    let totalVotes = votes.positive + votes.negative
     
     let percentage = {
-        good: ((votes.good/totalVotes)*100).toFixed(2),
-        bad: ((votes.bad/totalVotes)*100).toFixed(2)
+        positive: ((votes.positive/totalVotes)*100).toFixed(1),
+        negative: ((votes.negative/totalVotes)*100).toFixed(1)
     }
 
     // CSS via JS to be dynamic
 
-    const VotebarGood = {
+    const Votebarpositive = {
         height: '100%',
-        width: `${percentage.good}%`,
+        width: `${percentage.positive}%`,
         backgroundColor: 'rgba(60, 187, 180, 0.6)',
         display: 'flex',
         justifyContent: 'left',
@@ -21,9 +21,9 @@ export const VoteBar = (votes) => {
         color: '#fff'
     }
 
-    const VotebarBad = {
+    const Votebarnegative = {
         height: '100%',
-        width: `${percentage.bad}%`,
+        width: `${percentage.negative}%`,
         backgroundColor: 'rgba(249, 173, 29, 0.6)',
         display: 'flex',
         justifyContent: 'right',
@@ -34,12 +34,12 @@ export const VoteBar = (votes) => {
     return(
         <div className="votecard__votebar-container">
             <span className="votebar__total">{totalVotes}</span>
-            <div className="votebar__good" style={VotebarGood}>
+            <div className="votebar__positive" style={Votebarpositive}>
                 <img className="votebar__svg thumbsup" src="assets/img/thumbs-up.svg"/>
-                {percentage.good}%
+                {percentage.positive}%
             </div>
-            <div className="votebar__bad" style={VotebarBad}>
-                {percentage.bad}%
+            <div className="votebar__negative" style={Votebarnegative}>
+                {percentage.negative}%
                 <img className="votebar__svg thumbsdown" src="assets/img/thumbs-down.svg"/>
             </div>
         </div>
