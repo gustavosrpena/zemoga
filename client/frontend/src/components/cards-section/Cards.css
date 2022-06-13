@@ -1,0 +1,28 @@
+.cards{
+    /* display: flex;
+    flex-wrap: wrap; */
+}
+
+.votecards__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+    .cards {
+        margin-right: 80px;
+        margin-left: 80px;
+    }
+}
+@media (min-width: 1440px) {
+    .cards {
+        margin-right: calc((100vw - 1350px) / 2);
+        margin-left: calc((100vw - 1350px) / 2);
+    }
+
+    .padding-container {
+        padding-right:  calc((100vw - 1350px) / 2);
+        padding-left:  calc((100vw - 1350px) / 2);
+    }
+}
