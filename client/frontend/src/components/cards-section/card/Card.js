@@ -5,32 +5,8 @@ import React from "react"
 import axios from "axios"
 
 export const Card = (props) => {
-    console.log(props.date,"data")
-    // console.log(props.date.day,"data")
-
     const day = props.date[8].concat(props.date[9])
     const month = props.date[5].concat(props.date[6])
-    // props.date = {day,month}
-
-    // // props.date.day = props.date.getDay()
-    // // props.date.month = props.month.getMonth()
-
-    // var props = {
-    //     votes: {
-    //         good: 15,
-    //         bad: 10
-    //     },
-    //     date: {
-    //         day: 3,
-    //         month: 5
-    //     },
-    //     name: 'Kayne West',
-    //     desc: 'lorem blablablabla',
-    //     category: 'Music',
-    //     img: 'assets/img/pope-francis.png'
-    // }
-
-
 
     const voteState = {
         vote: '',
@@ -52,14 +28,12 @@ export const Card = (props) => {
           setState({voteBtnText: "Select an option and vote!",});
           return;
         }
-        console.log('before', props.votes)
     
         if (state.vote == 'good') props.votes.good += 1
             
         else props.votes.bad += 1
 
         setState({voteBtnText: "Vote Again",});
-        console.log('after', props.votes)
         
     };
     

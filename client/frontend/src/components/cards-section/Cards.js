@@ -26,45 +26,45 @@ export const Cards = (props) => {
         fetchData()
     },[])
 
-    useEffect(() => {
-      window.addEventListener('resize', function() {
-        swiperMode()
-      })
-    })
+    useEffect(()=>{
+      swiperMode()
+    }, [])
+    
+    window.addEventListener('resize', swiperMode)
 
-    var init = false
-    var swiper = Swiper
-    var classNameCards = 'votecard'
+    const [classCards, setClassCards] = useState('votecard swiper');
+    let swiper = null
 
     function swiperMode() {
-        let mobile = window.matchMedia('(min-width: 0px) and (max-width: 1099px)');
+        let mobile = window.matchMedia('(min-width: 0px) and (max-width: 1099px)')
 
-        if(mobile.matches) {
-            if (!init) {
-                init = true
-                classNameCards += ' swiper'
-                const swiper = new Swiper('.swiper', {
-                  direction: 'horizontal',
-                  loop: true,
-                })
-            }
+        if(!swiper){
+          swiper = new Swiper('.swiper', {
+            direction: 'horizontal',
+            loop: true,
+          })
         }
 
-        else if(!mobile.matches && init){
-          swiper.destroy(true,true)
-          init = false
-          classNameCards = 'votecard'
+        if(mobile.matches){
+          setClassCards('votecard swiper')
+        }
+
+        if(!mobile.matches ){
+          console.log('antes do if do swiper', swiper)
+          if(swiper){
+            swiper.destroy()
+            console.log('dentro do if do swiper', swiper)
+          }
+          setClassCards('votecard')
         }
     }   
 
     return (
         <section className="cards">
             <Banner />
-            {swiperMode()}
-            <div className={classNameCards}>
-              <div className={classNameCards+'-wrapper'}>
+            <div className={classCards}>
+              <div className={classCards+'-wrapper'}>
                 {cards.map(card =>{
-                console.log(card)
                 return  <Card 
                     name = {card.name}
                     description = {card.description}
