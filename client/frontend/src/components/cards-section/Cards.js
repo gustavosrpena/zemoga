@@ -1,12 +1,15 @@
+import "./Cards.css"
 import { Banner } from "./banner/Banner";
 import { Card } from "./card/Card";
+import { ListSelector } from "./list-selector/ListSelector";
 import axios from "axios";
 import { useEffect } from "react";
-import React from "react";
+import React, { useState }  from "react";
 
 export const Cards = (props) => {
     const [cards, setCards] = React.useState([]);
-  
+    const [listType, setListType] = useState('list');
+
     const fetchData = async() =>{
       const options ={
         url: 'http://localhost:5000',
@@ -43,20 +46,28 @@ export const Cards = (props) => {
             <Banner />
             {/* <Card /> */}
             {console.log(cards.length)}
-            {cards.map(card =>{
-            console.log(card)
-            return  <Card 
-                id = {card._id}
-                name = {card.name}
-                description = {card.description}
-                category = {card.category}
-                picture = {card.picture}
-                date = {card.lastUpdated}
-                votes = {card.votes}
-                positive = {card.votes.positive}
-                negative = {card.votes.negative}
+            <ListSelector
+                listType = {listType}
+                setListType = {setListType}
+            />
+            <div className={"votecards__container " + listType}>
+              {cards.map(card =>{
+              console.log(card)
+              return  <Card 
+                  id = {card._id}
+                  name = {card.name}
+                  description = {card.description}
+                  category = {card.category}
+                  picture = {card.picture}
+                  date = {card.lastUpdated}
+                  votes = {card.votes}
+                  positive = {card.votes.positive}
+                  negative = {card.votes.negative}
+                  listType = {listType}
+                  setListType = {setListType}
 
-            />})}
+              />})}
+            </div>
         </section>
     )
 }

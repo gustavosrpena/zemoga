@@ -1,11 +1,13 @@
 import "./Card.css"
+import { ListSelector } from "../list-selector/ListSelector";
 import { VoteBar } from "./vote-bar/VoteBar"
 import { useState } from "react"
 import React from "react"
 import axios from "axios"
 
 export const Card = (props) => {
-    console.log(props.id,"data")
+    // console.log(props.id,"data")
+    console.log(ListSelector.listType)
     // console.log(props.date.day,"data")
     // props.picture = 
     const day = props.date[8].concat(props.date[9])
@@ -112,29 +114,32 @@ export const Card = (props) => {
     }
 
     return (
-        <div className="votecard__container">
-            <img className="votecard__background-img" src={"assets/card-img/card/"+props.picture} alt={props.name} title={props.name}/>
-            
-            <div className="votecard__text">
-                <h2>{props.name}</h2>
-                <p>{props.description}</p>
-            </div>
-            
-            <div className="votecard__vote-options">
-                <span className="votecard__vote-eyebrown-text">{calcDate(day,month)} in {props.category}</span>
+        <div className={"votecard__wrapper swipper-wrapper " + props.listType}>
+            <div className={"votecard__content "+ props.listType}>
+                {/* <img className="votecard__background-img" src={"assets/card-img/card/"+props.picture} alt={props.name} title={props.name}/> */}
+                <img className="votecard__background-img" src={"assets/card-img/"+ props.listType +"/"+props.picture} alt={props.name} title={props.name}/>
+
+                <span className={"votecard__tranparency "+ props.listType}></span>
+                <div className={"votecard__text " + props.listType}>
+                    <h2 className={"votecard__text-name " + props.listType}>{props.name}</h2>
+                    <p className={"votecard__text-description " + props.listType}>{props.description}</p>
+                </div>
                 
-                <form className="votecard__form" onSubmit={voteSubmit}> 
-                    <input type="radio" id="thumbs-up" name="vote" value="positive" onChange={voteChange}/>
-                    <label className="votecard__form-input positive" for="thumbs-up"><img src="assets/img/thumbs-up.svg" /></label>
+                <div className={"votecard__vote-options "+ props.listType}>
+                    <span className="votecard__vote-eyebrown-text">{calcDate(day,month)} in {props.category}</span>
                     
-                    <input type="radio" id="thumbs-down" name="vote" value="negative" onChange={voteChange}/>
-                    <label className="votecard__form-input negative" for="thumbs-down"><img src="assets/img/thumbs-down.svg" /></label>
-                    
-                    <button className="votecard_vote-button" type="submit">{state.voteBtnText}</button>
-                </form>
+                    <form className="votecard__form" onSubmit={voteSubmit}> 
+                        <input type="radio" id="thumbs-up" name="vote" value="positive" onChange={voteChange}/>
+                        <label className="votecard__form-input positive" for="thumbs-up"><img className="votecard__form-svg" src="assets/img/thumbs-up.svg" /></label>
+                        
+                        <input type="radio" id="thumbs-down" name="vote" value="negative" onChange={voteChange}/>
+                        <label className="votecard__form-input negative" for="thumbs-down"><img className="votecard__form-svg" src="assets/img/thumbs-down.svg" /></label>
+                        
+                        <button className="votecard_vote-button" type="submit">{state.voteBtnText}</button>
+                    </form>
 
+                </div>
             </div>
-
             <VoteBar positive={props.votes.positive} negative={props.votes.negative}/>
         </div>
     )
