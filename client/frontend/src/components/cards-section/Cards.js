@@ -1,11 +1,12 @@
 import { Banner } from "./banner/Banner";
 import { Card } from "./card/Card";
 import axios from "axios";
-import { useEffect } from "react";
-import React from "react";
+import { useEffect, useState } from "react";
+import { Swiper } from 'swiper';
+import 'swiper/css';
 
 export const Cards = (props) => {
-    const [cards, setCards] = React.useState([]);
+    const [cards, setCards] = useState([]);
   
     const fetchData = async() =>{
       const options ={
@@ -18,44 +19,64 @@ export const Cards = (props) => {
       };
       await axios(options)
         .then(response => {
-        //   console.log(response.data);
-        //   console.log(typeof(response.data))
-        //   console.log(response.length)
           setCards(response.data)
-
-          
         });
-        // console.log(data)
-        // console.log(typeof(data))
-        // console.log(data.length)
     }
-    React.useEffect(() => {
+    useEffect(() => {
         fetchData()
     },[])
-    // console.log(cards)
-    // console.log(typeof(cards))
-    // console.log(cards.length)
 
+    useEffect(() => {
+      window.addEventListener('resize', function() {
+        swiperMode()
+      })
+    })
 
-    
+    var init = false
+    var swiper = Swiper
+    var classNameCards = 'votecard'
+
+    function swiperMode() {
+        let mobile = window.matchMedia('(min-width: 0px) and (max-width: 1099px)');
+
+        if(mobile.matches) {
+            if (!init) {
+                init = true
+                classNameCards += ' swiper'
+                const swiper = new Swiper('.swiper', {
+                  direction: 'horizontal',
+                  loop: true,
+                })
+            }
+        }
+
+        else if(!mobile.matches && init){
+          swiper.destroy(true,true)
+          init = false
+          classNameCards = 'votecard'
+        }
+    }   
+
     return (
         <section className="cards">
             <Banner />
-            {/* <Card /> */}
-            {console.log(cards.length)}
-            {cards.map(card =>{
-            console.log(card)
-            return  <Card 
-                name = {card.name}
-                description = {card.description}
-                category = {card.category}
-                picture = {card.picture}
-                date = {card.lastUpdated}
-                votes = {card.votes}
-                positive = {card.votes.positive}
-                negative = {card.votes.negative}
-
-            />})}
+            {swiperMode()}
+            <div className={classNameCards}>
+              <div className={classNameCards+'-wrapper'}>
+                {cards.map(card =>{
+                console.log(card)
+                return  <Card 
+                    name = {card.name}
+                    description = {card.description}
+                    category = {card.category}
+                    picture = {card.picture}
+                    date = {card.lastUpdated}
+                    votes = {card.votes}
+                    positive = {card.votes.positive}
+                    negative = {card.votes.negative}
+                />})}
+              </div>
+            </div>
         </section>
     )
 }

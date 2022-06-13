@@ -78,7 +78,7 @@ export const Card = (props) => {
     }
 
     return (
-        <div className="votecard__container">
+        <div className="votecard__container swiper-slide">
             <img className="votecard__background-img" src={props.img} alt={props.name} title={props.name}/>
             
             <div className="votecard__text">
