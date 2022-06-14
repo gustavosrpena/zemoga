@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Cards = require('./models/card');
 const cors = require("cors");
+const { ObjectId } = require("mongodb");
 global.bodyParser = require('body-parser');
 // const router = express.Router();
 
@@ -65,12 +66,30 @@ app.use(bodyParser.json({
   parameterLimit: 100000
 }))
 
-app.post('/send', (req, res) => {
-  console.log(db,"a",db.cards,"b",Cards,"c");
-  db.cards.updateOne(req.body, (err, data) => {
-      if(err) return console.log(err);
-      res.send(('saved to db: ' + data));
-  })
+app.post('/send/:id', (req, res) => {
+  // console.log(db,"a",db.cards,"b",Cards,"c");
+  console.log(req)
+  console.log(req.body.votes)
+
+  let db_connect = db
+  let myquery = {_id: ObjectId(req.params.id)};
+  let newvalues = {
+    $set:{
+      votes: req.body.votes
+    },
+  }
+  // db
+  //   .collection("cards")
+  Cards
+    .updateOne(myquery, newvalues, function (err, result) {
+      if (err) throw err;
+      console.log("1 document updated");
+      res.json(result);
+    });
+  // db.cards.updateOne(req.body, (err, data) => {
+  //     if(err) return console.log(err);
+  //     res.send(('saved to db: ' + data));
+  // })
   // db.collection('cards').findOne(req.body, (err, data) => {
   //   if(err) return console.log(err);
   //   res.send(('saved to db: ' + data));
