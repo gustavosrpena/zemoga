@@ -1,38 +1,17 @@
 import "./Card.css"
 import { ListSelector } from "../list-selector/ListSelector";
 import { VoteBar } from "./vote-bar/VoteBar"
+import {VoteForm} from "./vote-form/VoteForm"
 import { useState } from "react"
 import React from "react"
 import axios from "axios"
 
 export const Card = (props) => {
     // console.log(props.id,"data")
-    console.log(ListSelector.listType)
-    // console.log(props.date.day,"data")
-    // props.picture = 
+    // console.log(ListSelector.listType)
+
     const day = props.date[8].concat(props.date[9])
     const month = props.date[5].concat(props.date[6])
-    // props.date = {day,month}
-
-    // // props.date.day = props.date.getDay()
-    // // props.date.month = props.month.getMonth()
-
-    // var props = {
-    //     votes: {
-    //         positive: 15,
-    //         negative: 10
-    //     },
-    //     date: {
-    //         day: 3,
-    //         month: 5
-    //     },
-    //     name: 'Kayne West',
-    //     desc: 'lorem blablablabla',
-    //     category: 'Music',
-    //     img: 'assets/img/pope-francis.png'
-    // }
-
-
 
     const voteState = {
         vote: '',
@@ -47,7 +26,7 @@ export const Card = (props) => {
         setState((prev) => ({ ...prev, vote }));
     };
 
-    const voteSubmit = (e) => {
+    async function voteSubmit(e){
         e.preventDefault();
     
         if (!state.vote) {
@@ -63,11 +42,11 @@ export const Card = (props) => {
         else {
             props.votes.negative += 1
         }
-
-        let databody = { "id" :props.id,
+        console.log(props)
+        let databody = {
            "votes": props.votes
         };
-        fetch('http://localhost:5000/send', {
+        await fetch(`http://localhost:5000/send/${props.id.toString()}`, {
             method: 'POST',
             body: JSON.stringify(databody),
             headers: {
@@ -126,7 +105,7 @@ export const Card = (props) => {
                 
                 <div className={"votecard__vote-options "+ props.listType}>
                     <span className="votecard__vote-eyebrown-text">{calcDate(day,month)} in {props.category}</span>
-                    
+                    {/* <VoteForm/> */}
                     <form className="votecard__form" onSubmit={voteSubmit}> 
                         <input type="radio" id="thumbs-up" name="vote" value="positive" onChange={voteChange}/>
                         <label className="votecard__form-input positive" for="thumbs-up"><img className="votecard__form-svg" src="assets/img/thumbs-up.svg" /></label>
