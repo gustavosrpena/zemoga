@@ -54,7 +54,6 @@ export const Card = (props) => {
           setState({voteBtnText: "Select an option and vote!",});
           return;
         }
-        console.log('before', props.votes)
     
         if (state.vote == 'positive'){
 
@@ -95,7 +94,6 @@ export const Card = (props) => {
         //   postData();
 
         setState({voteBtnText: "Vote Again",});
-        console.log('after', props.votes)
         
     };
     
@@ -114,7 +112,8 @@ export const Card = (props) => {
     }
 
     return (
-        <div className={"votecard__wrapper swipper-wrapper " + props.listType}>
+            
+        <div className={"votecard__wrapper swiper-slide swipper-wrapper " + props.listType}>
             <div className={"votecard__content "+ props.listType}>
                 {/* <img className="votecard__background-img" src={"assets/card-img/card/"+props.picture} alt={props.name} title={props.name}/> */}
                 <img className="votecard__background-img" src={"assets/card-img/"+ props.listType +"/"+props.picture} alt={props.name} title={props.name}/>
