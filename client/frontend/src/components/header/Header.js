@@ -3,7 +3,7 @@ import { LoginModal } from "./login-modal/LoginModal"
 import { useState } from "react"
 import './Header.css'
 
-export const Header = (props) =>{
+export const Header = () =>{
 
     const [openModal, setOpenModal] = useState(false)
     return (
@@ -22,7 +22,7 @@ export const Header = (props) =>{
                             <a href="/">How It Works</a>
                         </li>
                         <li>
-                            <a href="/" className="open__login" onClick={() => {setOpenModal(true)}}>
+                            <a href="#" className="open__login" onClick={() => {setOpenModal(true)}}>
                                 Login / Sign Up
                             </a>
                         </li>

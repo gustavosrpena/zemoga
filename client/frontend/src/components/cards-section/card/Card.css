@@ -7,13 +7,6 @@
     width: 45%;
     margin: 10px 5px;
 }
-.votecard__wrapper.grid:nth-child(2),
-.votecard__wrapper.grid:nth-child(5){
-
-}
-.votecard__wrapper{
-    
-}
 
 .votecard__wrapper.list{
     flex-grow: 1;

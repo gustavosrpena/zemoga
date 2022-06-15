@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "./Submit-Modal.css";
 
-
-
 export const SubmitModal = (props) =>{
 
     const [form,setForm] = useState('');
@@ -14,11 +12,9 @@ export const SubmitModal = (props) =>{
 
     async function SubmitCard(e){
         e.preventDefault();
-        console.log(form)
         let databody = {
             name: form
          };
-         console.log(databody)
         await fetch(`http://localhost:5000/create`, {
             method: 'POST',
             body: JSON.stringify(databody),
@@ -27,7 +23,6 @@ export const SubmitModal = (props) =>{
             },
         })
         .then(res => res.json())
-        .then(data => console.log(data));
         updateForm('')
     }
     return(

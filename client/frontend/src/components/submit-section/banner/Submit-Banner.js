@@ -1,7 +1,6 @@
 import "./Submit-Banner.css";
 
 export const SubmitBanner = (props) =>{
-    console.log(props)
     return(
         <div className="submit__banner">
             <div className="submit__banner-content">
