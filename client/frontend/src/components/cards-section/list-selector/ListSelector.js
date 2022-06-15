@@ -13,8 +13,8 @@ export const ListSelector = (props) =>{
             <div className="votecards__listselector-selector">
                 <label className="votecards__listselector-label" >
                     <select className="votecards__listselector-input" onChange={(e) => changeListView(e.target.value)}>
-                        <option value="list">List</option>
                         <option value="grid">Grid</option>
+                        <option value="list">List</option>
                     </select>
                 </label>
             </div>

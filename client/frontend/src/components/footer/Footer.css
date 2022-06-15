@@ -3,6 +3,9 @@
     align-items: flex-end;
     justify-content: space-between;
     margin: 0 1rem 3rem;
+    margin-top: 30px;
+    border-top: #000000 dashed;
+    padding-top: 50px;
 }
 
 .footer__links li {

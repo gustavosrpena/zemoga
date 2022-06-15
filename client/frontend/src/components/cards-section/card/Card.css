@@ -4,8 +4,8 @@
 }
 
 .votecard__wrapper.grid{
-    width: 32%;
-    margin-bottom: 25px;
+    width: 45%;
+    margin: 10px 5px;
 }
 .votecard__wrapper.grid:nth-child(2),
 .votecard__wrapper.grid:nth-child(5){
@@ -137,4 +137,11 @@
     text-align: center;
     color: #FFFFFF;
     width: 140px;
+}
+
+@media (min-width:1440px) {
+    .votecard__wrapper.grid{
+        width: 32%;
+        margin-bottom: 25px;
+    }
 }

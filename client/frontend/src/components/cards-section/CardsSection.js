@@ -9,7 +9,7 @@ import 'swiper/css'
 
 export const CardsSection = () => {
     const [cards, setCards] = useState([]);
-    const [listType, setListType] = useState('list');
+    const [listType, setListType] = useState('grid');
 
     const fetchData = async() =>{
       const options ={
@@ -69,7 +69,7 @@ export const CardsSection = () => {
             />
             <div className={classCards}>
               <div className={"votecards__container " + listType + " " + classCards+'-wrapper'}>
-                {cards.map(card =>{
+                {cards.slice(1).map(card =>{
                 return  <Card 
                     id = {card._id}
                     name = {card.name}
