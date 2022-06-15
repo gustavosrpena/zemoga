@@ -1,13 +1,13 @@
-import "./Cards.css"
-import { Banner } from "./banner/Banner";
-import { Card } from "./card/Card";
-import { ListSelector } from "./list-selector/ListSelector";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Swiper } from 'swiper';
-import 'swiper/css';
+import "./CardsSection.css"
+import { Banner } from "./banner/Banner"
+import { Card } from "./card/Card"
+import { ListSelector } from "./list-selector/ListSelector"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { Swiper } from 'swiper'
+import 'swiper/css'
 
-export const Cards = (props) => {
+export const CardsSection = () => {
     const [cards, setCards] = useState([]);
     const [listType, setListType] = useState('list');
 
@@ -27,9 +27,9 @@ export const Cards = (props) => {
     }
     useEffect(() => {
         fetchData()
-    },[])
+    }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
       swiperMode()
     }, [])
     
@@ -53,10 +53,8 @@ export const Cards = (props) => {
         }
 
         if(!mobile.matches ){
-          console.log('antes do if do swiper', swiper)
           if(swiper){
             swiper.destroy()
-            console.log('dentro do if do swiper', swiper)
           }
           setClassCards('votecard')
         }
@@ -65,7 +63,6 @@ export const Cards = (props) => {
     return (
         <section className="cards">
             <Banner />
-            {/* <Card /> */}
             <ListSelector
                 listType = {listType}
                 setListType = {setListType}
@@ -85,7 +82,7 @@ export const Cards = (props) => {
                     negative = {card.votes.negative}
                     listType = {listType}
                     setListType = {setListType}
-
+                    key={card._id}
                 />})}
               </div>
             </div>

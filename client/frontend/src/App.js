@@ -1,6 +1,6 @@
 import {Header} from "./components/header/Header";
 import {Hero} from "./components/hero/Hero";
-import {Cards} from "./components/cards-section/Cards";
+import {CardsSection} from "./components/cards-section/CardsSection";
 import {Footer} from "./components/footer/Footer";
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 import axios from "axios";
@@ -13,10 +13,7 @@ function App() {
     <BrowserRouter className="App">
       <Header/>
       <Hero/>
-      {/* <Routes/>
-      <Route path="/" component = {Cards} exact/>
-      <Routes/> */}
-      <Cards/>
+      <CardsSection/>
       <Footer/>
     </BrowserRouter>
   );
