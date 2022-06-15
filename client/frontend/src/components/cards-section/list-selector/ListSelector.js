@@ -1,17 +1,10 @@
 import "./ListSelector.css"
-import React, { useState } from "react"
 
 export const ListSelector = (props) =>{
-    // const [listType, setListType] = useState('list');
-
     const changeListView = (event) =>{
-        // props.setListType(event);
-        console.log(props.listType);
-        console.log(event);
         props.setListType(event);
-        console.log(props.listType);
-
     }
+    
     return (
         <div className="votecards__listselector-container">
             <div className="votecards__listselector-text">

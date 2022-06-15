@@ -27,7 +27,7 @@ export const Cards = (props) => {
     }
     useEffect(() => {
         fetchData()
-    },[])
+    }, [])
 
     useEffect(()=>{
       swiperMode()
@@ -53,10 +53,8 @@ export const Cards = (props) => {
         }
 
         if(!mobile.matches ){
-          console.log('antes do if do swiper', swiper)
           if(swiper){
             swiper.destroy()
-            console.log('dentro do if do swiper', swiper)
           }
           setClassCards('votecard')
         }
@@ -65,7 +63,6 @@ export const Cards = (props) => {
     return (
         <section className="cards">
             <Banner />
-            {/* <Card /> */}
             <ListSelector
                 listType = {listType}
                 setListType = {setListType}
@@ -73,6 +70,7 @@ export const Cards = (props) => {
             <div className={classCards}>
               <div className={"votecards__container " + listType + " " + classCards+'-wrapper'}>
                 {cards.map(card =>{
+                  console.log(card.votes);
                 return  <Card 
                     id = {card._id}
                     name = {card.name}
@@ -85,7 +83,6 @@ export const Cards = (props) => {
                     negative = {card.votes.negative}
                     listType = {listType}
                     setListType = {setListType}
-
                 />})}
               </div>
             </div>
