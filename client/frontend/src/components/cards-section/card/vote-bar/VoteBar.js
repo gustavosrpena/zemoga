@@ -35,12 +35,12 @@ export const VoteBar = (votes) => {
         <div className="votecard__votebar-container">
             <span className="votebar__total">{totalVotes}</span>
             <div className="votebar__positive" style={Votebarpositive}>
-                <img className="votebar__svg thumbsup" src="assets/img/thumbs-up.svg"/>
+                <img className="votebar__svg thumbsup" src="assets/img/thumbs-up.svg" alt="thumbs-up"/>
                 {percentage.positive}%
             </div>
             <div className="votebar__negative" style={Votebarnegative}>
                 {percentage.negative}%
-                <img className="votebar__svg thumbsdown" src="assets/img/thumbs-down.svg"/>
+                <img className="votebar__svg thumbsdown" src="assets/img/thumbs-down.svg" alt="thumbs-down"/>
             </div>
         </div>
     )
