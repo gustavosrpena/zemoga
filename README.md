@@ -19,4 +19,8 @@
 
 ## TO DO
 
-    Next step would be to create a logged in section with a card create and delete functionalities for admin user access
+    The next steps for this project would be 
+        Use the database to store and request the card images
+        Dinamically change the background for the hero section
+        Create a logged in section with a card create and delete functionalities for admin user access
+        
