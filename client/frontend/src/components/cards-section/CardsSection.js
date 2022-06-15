@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import { Swiper } from 'swiper'
 import 'swiper/css'
 
-export const CardsSection = (props) => {
+export const CardsSection = () => {
     const [cards, setCards] = useState([]);
     const [listType, setListType] = useState('list');
 
@@ -82,6 +82,7 @@ export const CardsSection = (props) => {
                     negative = {card.votes.negative}
                     listType = {listType}
                     setListType = {setListType}
+                    key={card._id}
                 />})}
               </div>
             </div>

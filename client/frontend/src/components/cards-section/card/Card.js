@@ -11,12 +11,12 @@ export const Card = (props) => {
         let newDay = newDate.getDate()
         let newMonth = newDate.getMonth()+1
 
-        if(newMonth == month){
-            if (newDay == day) return 'today'
-            else if (newDay == day+1) return 'yesterday'
+        if(newMonth === month){
+            if (newDay === day) return 'today'
+            else if (newDay === day+1) return 'yesterday'
             else return newDay-day + ' days ago'
         }
-        else if (newMonth == month+1) return 'last month'
+        else if (newMonth === month+1) return 'last month'
         else return Math.abs(newMonth-month) + ' months ago'
     }
 
@@ -27,7 +27,7 @@ export const Card = (props) => {
     })
 
     const voteChange = (e) => {
-        if(voteState.voteBtnText=='Vote Now'){
+        if(voteState.voteBtnText === 'Vote Now'){
             const vote = e.currentTarget.value
             setVoteState(prevState => ({...prevState, vote: vote}));
         }
@@ -37,7 +37,7 @@ export const Card = (props) => {
     async function voteSubmit(e){
         e.preventDefault();
 
-        if (voteState.vote==null && voteState.voteBtnText=='Vote Now') {
+        if (voteState.vote === null && voteState.voteBtnText === 'Vote Now') {
           setVoteState(prevState => ({
               ...prevState,
               eyebrownText: 'Select an option and vote!'
@@ -45,7 +45,7 @@ export const Card = (props) => {
           return 
         }
 
-        else if(voteState.voteBtnText=='Vote Again') {
+        else if(voteState.voteBtnText === 'Vote Again') {
             setVoteState({
                 vote: null,
                 voteBtnText: 'Vote Now',
@@ -54,9 +54,9 @@ export const Card = (props) => {
             return
         }
     
-        if (voteState.vote == 'positive') props.votes.positive += 1
+        if (voteState.vote === 'positive') props.votes.positive += 1
             
-        if (voteState.vote == 'negative') props.votes.negative += 1
+        if (voteState.vote === 'negative') props.votes.negative += 1
 
         let databody = {
            "votes": props.votes
@@ -97,8 +97,8 @@ export const Card = (props) => {
                             onChange={voteChange}
                         />
                             
-                        <label className="votecard__form-input positive" for={'thumbs-up-' + props.name}>
-                            <img className="votecard__form-svg" src="assets/img/thumbs-up.svg" />
+                        <label className="votecard__form-input positive" htmlFor={'thumbs-up-' + props.name}>
+                            <img className="votecard__form-svg" src="assets/img/thumbs-up.svg" alt="thumbs-up"/>
                         </label>
                         
                         <input 
@@ -110,8 +110,8 @@ export const Card = (props) => {
                             onChange={voteChange}
                         />
 
-                        <label className="votecard__form-input negative" for={'thumbs-down-' + props.name}>
-                            <img className="votecard__form-svg" src="assets/img/thumbs-down.svg" />
+                        <label className="votecard__form-input negative" htmlFor={'thumbs-down-' + props.name}>
+                            <img className="votecard__form-svg" src="assets/img/thumbs-down.svg" alt="thumbs-down"/>
                         </label>
                         
                         <button className="votecard_vote-button" type="submit">{voteState.voteBtnText}</button>
