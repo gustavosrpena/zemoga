@@ -3,8 +3,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Cards = require('./models/card');
+const Suggestion = require('./models/suggestion');
 const cors = require("cors");
 const { ObjectId } = require("mongodb");
+const { response } = require("express");
 global.bodyParser = require('body-parser');
 // const router = express.Router();
 
@@ -33,16 +35,6 @@ try{
 }
 connectMongo();
 
-// router.route('/').get((req,res) =>{
-//   Cards.find((error,data) =>{
-//     if(error){
-//       return next(error)
-//     }else{
-//       console.log(data)
-//       res.json(data)
-//     }
-//   })
-// })
 app.get("/", function(req, res) {
 
   Cards.find()
@@ -67,40 +59,34 @@ app.use(bodyParser.json({
 }))
 
 app.post('/send/:id', (req, res) => {
-  // console.log(db,"a",db.cards,"b",Cards,"c");
   console.log(req)
   console.log(req.body.votes)
 
-  let db_connect = db
   let myquery = {_id: ObjectId(req.params.id)};
   let newvalues = {
     $set:{
       votes: req.body.votes
     },
   }
-  // db
-  //   .collection("cards")
   Cards
     .updateOne(myquery, newvalues, function (err, result) {
       if (err) throw err;
       console.log("1 document updated");
       res.json(result);
     });
-  // db.cards.updateOne(req.body, (err, data) => {
-  //     if(err) return console.log(err);
-  //     res.send(('saved to db: ' + data));
-  // })
-  // db.collection('cards').findOne(req.body, (err, data) => {
-  //   if(err) return console.log(err);
-  //   res.send(('saved to db: ' + data));
-  // })
+
 });
-// app.use(express.static(__dirname));
 
-
-// app.get("/api", (req,res) => {
-//   res.json(cards)
-// })
+app.post('/create', (req,response) =>{
+  let myobj = {
+    name: req.body.name,
+  };
+  Suggestion
+    .create(myobj, function(err,res){
+      if (err) throw err;
+      response.json(res);
+    });
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
