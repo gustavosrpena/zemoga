@@ -6,9 +6,8 @@ const Cards = require('./models/card');
 const Suggestion = require('./models/suggestion');
 const cors = require("cors");
 const { ObjectId } = require("mongodb");
-const { response } = require("express");
 global.bodyParser = require('body-parser');
-// const router = express.Router();
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -39,7 +38,6 @@ app.get("/", function(req, res) {
 
   Cards.find()
     .then((result) => {
-      // console.log(result)
       res.json(result);
     })
     .catch((err) => {
@@ -59,9 +57,6 @@ app.use(bodyParser.json({
 }))
 
 app.post('/send/:id', (req, res) => {
-  console.log(req)
-  console.log(req.body.votes)
-
   let myquery = {_id: ObjectId(req.params.id)};
   let newvalues = {
     $set:{
@@ -71,7 +66,6 @@ app.post('/send/:id', (req, res) => {
   Cards
     .updateOne(myquery, newvalues, function (err, result) {
       if (err) throw err;
-      console.log("1 document updated");
       res.json(result);
     });
 
