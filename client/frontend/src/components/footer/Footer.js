@@ -2,7 +2,7 @@ import './Footer.css'
 
 export const Footer = (props) => {
     return (
-        <footer class="footer">
+        <footer class="footer container">
             <div class="footer__links">
                 <ul>
                     <li>

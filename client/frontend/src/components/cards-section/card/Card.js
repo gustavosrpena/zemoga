@@ -35,10 +35,8 @@ export const Card = (props) => {
         }
     
         if (state.vote == 'positive'){
-
              props.votes.positive += 1
             }
-            
         else {
             props.votes.negative += 1
         }
@@ -55,22 +53,6 @@ export const Card = (props) => {
         })
         .then(res => res.json())
         .then(data => console.log(data));
-
-        // const postData = async() =>{
-        //     const options ={
-        //       url: 'http://localhost:5000/send',
-        //       method: 'post',
-        //       headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json;charset=UTF-8'
-        //       }
-        //     };
-        //     await axios(options,JSON.stringify(databody))
-        //       .then(response => {
-        //           console.log(response)
-        //       });
-        //   }
-        //   postData();
 
         setState({voteBtnText: "Vote Again",});
         

@@ -1,9 +1,9 @@
 import {Header} from "./components/header/Header";
 import {Hero} from "./components/hero/Hero";
 import {Cards} from "./components/cards-section/Cards";
+import {SubmitSection} from "./components/submit-section/Submit-Section";
 import {Footer} from "./components/footer/Footer";
-import { BrowserRouter, Route, Routes} from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter} from "react-router-dom";
 import React from "react";
 import './App.css';
 
@@ -13,10 +13,8 @@ function App() {
     <BrowserRouter className="App">
       <Header/>
       <Hero/>
-      {/* <Routes/>
-      <Route path="/" component = {Cards} exact/>
-      <Routes/> */}
       <Cards/>
+      <SubmitSection/>
       <Footer/>
     </BrowserRouter>
   );
