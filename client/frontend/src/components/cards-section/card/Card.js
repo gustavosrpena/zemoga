@@ -17,7 +17,7 @@ export const Card = (props) => {
             else return newDay-day + ' days ago'
         }
         else if (newMonth == month+1) return 'last month'
-        else return newMonth-month + ' months ago'
+        else return Math.abs(newMonth-month) + ' months ago'
     }
 
     const [voteState, setVoteState] = useState({

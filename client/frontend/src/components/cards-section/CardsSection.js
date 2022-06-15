@@ -1,13 +1,13 @@
-import "./Cards.css"
-import { Banner } from "./banner/Banner";
-import { Card } from "./card/Card";
-import { ListSelector } from "./list-selector/ListSelector";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Swiper } from 'swiper';
-import 'swiper/css';
+import "./CardsSection.css"
+import { Banner } from "./banner/Banner"
+import { Card } from "./card/Card"
+import { ListSelector } from "./list-selector/ListSelector"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { Swiper } from 'swiper'
+import 'swiper/css'
 
-export const Cards = (props) => {
+export const CardsSection = (props) => {
     const [cards, setCards] = useState([]);
     const [listType, setListType] = useState('list');
 
@@ -29,7 +29,7 @@ export const Cards = (props) => {
         fetchData()
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
       swiperMode()
     }, [])
     
@@ -70,7 +70,6 @@ export const Cards = (props) => {
             <div className={classCards}>
               <div className={"votecards__container " + listType + " " + classCards+'-wrapper'}>
                 {cards.map(card =>{
-                  console.log(card.votes);
                 return  <Card 
                     id = {card._id}
                     name = {card.name}

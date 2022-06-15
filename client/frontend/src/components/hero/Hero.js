@@ -1,6 +1,36 @@
+import { useEffect, useState } from "react"
+import axios from "axios"
 import './Hero.css'
 
-export const Hero = (props) =>{
+export const Hero = () =>{
+    const [heroCard, setHeroCard] = useState([]);
+    
+    const calcDaysRemaining = () => {
+        //needs to define how many days it's suposed to be on
+        const dueDate = 31 
+        let newDate = new Date()
+        let newDay = newDate.getDate()
+        return dueDate - newDay
+    }
+
+    const fetchDataHero = async() =>{
+      const options ={
+        url: 'http://localhost:5000',
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      };
+      await axios(options)
+        .then(response => {
+          setHeroCard(response.data[0])
+        });
+    }
+    useEffect(() => {
+        fetchDataHero()
+    }, [])
+
     return (
         <section class="hero">
         <img
@@ -8,15 +38,15 @@ export const Hero = (props) =>{
             srcset="assets/img/pope-francis.png 750w, assets/img/pope-francis.@2x.png 1440w"
             sizes="(min-width: 750px) 1440px, 100vw"
             src="./assets/img/pope-francis.png"
-            alt="Pope Francis"/>
+            alt={heroCard.name}/>
         <div class="max-centered">
             <div class="hero__featured-card">
                 <div class="featured-card__glass-background"></div>
                 <div class="featured-card__content">
                     <p class="featured-card__hairline">What's your opinion on</p>
-                    <h2 class="featured-card__title">Pope Francis?</h2>
+                    <h2 class="featured-card__title">{heroCard.name}?</h2>
                     <p class="featured-card__desc">
-                        He’s talking tough on clergy sexual abuse, or is he just another pervert protector? (thumbs down) or a true pedophile punishing pontiff? (thumbs up)
+                        {heroCard.description}
                     </p>
                     <p class="featured-card__more-info">
                         <a href="http://wikipedia.com">
@@ -28,10 +58,10 @@ export const Hero = (props) =>{
                     </p>
                     <div class="featured-card__buttons">
                         <button class="icon-button" aria-label="thumbs up">
-                            {/* <img src="assets/img/thumbs-up.svg" alt="thumbs up" /> */}
+                            <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
                         </button>
                         <button class="icon-button" aria-label="thumbs down">
-                            {/* <img src="assets/img/thumbs-down.svg" alt="thumbs down" /> */}
+                            <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
                         </button>
                     </div>
                 </div>
@@ -42,7 +72,7 @@ export const Hero = (props) =>{
                 <span class="closing-gauge__title">closing in</span>
             </div>
             <div class="closing-gauge__right">
-                <span class="closing-gauge__number">22</span>
+                <span class="closing-gauge__number">{calcDaysRemaining()}</span>
                 <span class="closing-gauge__desc">days</span>
             </div>
         </div>
