@@ -55,6 +55,9 @@
     display: none;
 }
 
+.banner-top.closed{
+    display: none;
+}
 
 @media all and (min-width: 500px) {
     .banner-top .banner__left {
