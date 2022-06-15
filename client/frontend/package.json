@@ -23,7 +23,6 @@
     "eject": "react-scripts eject",
     "dev": "concurrently \"cd ../backend && node server.js\" \"react-scripts start\""
   },
-  "proxy": "http://localhost:5000",
   "homepage": ".",
   "eslintConfig": {
     "extends": [
