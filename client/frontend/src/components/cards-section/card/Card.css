@@ -3,6 +3,10 @@
     margin-bottom: 20px;
 }
 
+.votecard__wrapper.grid{
+    width: 45%;
+}
+
 .votecard__wrapper.list{
     flex-grow: 1;
 }
@@ -129,7 +133,8 @@
 @media (min-width:1100px) {
     .votecard__wrapper.grid{
         margin: 10px 5px;
-    }
+        width: 45%;
+    }    
 }
 @media (min-width:1440px) {
     .votecard__wrapper.grid{
