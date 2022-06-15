@@ -3,11 +3,6 @@
     margin-bottom: 20px;
 }
 
-.votecard__wrapper.grid{
-    width: 45%;
-    margin: 10px 5px;
-}
-
 .votecard__wrapper.list{
     flex-grow: 1;
 }
@@ -131,7 +126,11 @@
     color: #FFFFFF;
     width: 140px;
 }
-
+@media (min-width:1100px) {
+    .votecard__wrapper.grid{
+        margin: 10px 5px;
+    }
+}
 @media (min-width:1440px) {
     .votecard__wrapper.grid{
         width: 32%;
