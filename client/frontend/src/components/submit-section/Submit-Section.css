@@ -1,0 +1,17 @@
+.submit__section{
+    height: 100px;
+}
+@media (min-width: 1100px) {
+
+    .submit__section {
+        margin-right: 80px;
+        margin-left: 80px;
+    }
+}
+@media (min-width: 1440px) {
+    .submit__section {
+        margin-right: calc((100vw - 1350px) / 2);
+        margin-left: calc((100vw - 1350px) / 2);
+    }
+
+}

@@ -2,8 +2,8 @@ import './Footer.css'
 
 export const Footer = (props) => {
     return (
-        <footer className="footer">
-            <div className="footer__links">
+        <footer class="footer container">
+            <div class="footer__links">
                 <ul>
                     <li>
                         <a href="/">Terms and Conditions</a>
