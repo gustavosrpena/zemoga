@@ -1,6 +1,8 @@
 # Zemoga Front End Development - Candidate Test
 
     This is a project for the Zemoga Front End Development - Candidate Test
+    
+    This project consist on a voting application built with a Reactjs frontend application and a Nodejs backend application
 
 ## Stack
 
@@ -17,3 +19,8 @@
 
 ## TO DO
 
+    The next steps for this project would be 
+        Use the database to store and request the card images
+        Dinamically change the background for the hero section
+        Create a logged in section with a card create and delete functionalities for admin user access
+        
