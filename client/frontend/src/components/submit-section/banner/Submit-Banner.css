@@ -1,15 +1,18 @@
 .submit__banner{
     position: relative;
-    height: 100px;
+    background-image: url("../../../../public/assets/img/submit-banner-mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .submit__banner-content{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 35px;
+    padding: 20px 35px;
     max-width: 100%;
     height: 100%;
-
+    flex-direction: column;
+    text-align: center;
 }
 .submit__banner-background{
     position: absolute;
@@ -19,20 +22,36 @@
 
 .submit__banner-title{
     color: #464646;
-    font-size: 27px;
+    font-size: 26px;
     font-weight: 400;
     line-height: 32px;
     z-index: 2;
-
+    margin: 0 0 10px;
 }
 
 .submit__banner-btn{
-    width: 360px;
+    width: 100%;
     color: #464646;
     font-weight: 400;
-    font-size: 27px;
+    font-size: 20px;
     line-height: 32px;
     z-index: 2;
-    padding: 15px 30px;
+    padding: 10px 30px;
     background-color: transparent;
+}
+
+@media (min-width: 1100px) {
+    .submit__banner{
+        height: 100px;
+        background-image: url("../../../../public/assets/img/submit-banner.png");
+    }
+    .submit__banner-content{
+        flex-direction: row;
+        padding: 0 35px;
+    }
+    .submit__banner-btn{
+        width: 360px;
+        font-size: 27px;
+        padding: 20px 30px;
+    }
 }
