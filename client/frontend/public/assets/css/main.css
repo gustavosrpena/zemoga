@@ -514,12 +514,6 @@ main h2 {
         margin-left: auto;
     }
 
-    .max-centered > *,
-    .max-centered > hr[role="separator"] {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
     .max-centered main {
         padding: 0;
     }
